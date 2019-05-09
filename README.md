@@ -37,4 +37,6 @@ new EnhancedDropDownWidget(
 ```
 
 
+![Screenshot](https://github.com/TomerPacific/enhanced_drop_down/blob/master/screenshot.jpg?raw=true)
+
 
