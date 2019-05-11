@@ -1,6 +1,6 @@
 name: enhanced_drop_down
-description: A completely customizable drop down widget with a label. You can edit the label's name, the data for the drop down, the default value presented, provide a url to fetch data and get the value the user has selected.
-version: 0.1.1
+description: A completely customizable drop down widget that comes with a label built in. You can customize the label, the data, the default value and more.
+version: 0.1.2
 author: Tomer Ben-Rachel<tomerpacific@gmail.com>
 homepage: https://github.com/TomerPacific
 

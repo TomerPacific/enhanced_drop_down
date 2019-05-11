@@ -1,4 +1,4 @@
-# [Enhanced Dropdown Widget](https://pub.dev/packages/enhanced_drop_down)
+# Enhanced Dropdown Widget
 
 A completely customizable drop down widget, which wraps a label and a dropdown widget together into one component.
 
@@ -19,7 +19,7 @@ An Enhanced Dropdown Widget (or EDW), is based on flutter's dropdown widget, but
 
 - In case you are relying on an external source to provide the data for the dropdown, you can pass in the url to fetch that data
 
-**NOTE that currently, the parsing of the url is in JSON and only valid for key-value pairs that are in String format and type**
+**Please be aware that currently, the parsing of the url is in JSON and only valid for key-value pairs that are in String format and type**
 
 
 ### Instantiating an EDW is as follows:
@@ -36,7 +36,5 @@ new EnhancedDropDownWidget(
     )
 ```
 
-
-![Screenshot](https://github.com/TomerPacific/enhanced_drop_down/blob/master/screenshot.jpg?raw=true)
 
 
