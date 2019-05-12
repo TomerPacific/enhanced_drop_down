@@ -1,4 +1,4 @@
-# Enhanced Dropdown Widget
+# [Enhanced Dropdown Widget](https://pub.dev/packages/enhanced_drop_down#-readme-tab-)
 
 A completely customizable drop down widget, which wraps a label and a dropdown widget together into one component.
 
