@@ -1,6 +1,6 @@
 # [Enhanced Dropdown Widget](https://pub.dev/packages/enhanced_drop_down#-readme-tab-) 
 
-## With an overall score of 83!
+## With an overall score of 84!
 
 A completely customizable drop down widget, which wraps a label and a dropdown widget together into one component.
 
