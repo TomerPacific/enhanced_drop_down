@@ -16,9 +16,13 @@ class EnhancedDropDown extends StatefulWidget {
       this.valueReturned})
       : super(key: key);
 
+  /// Holds the default text to show when nothing is selected in the dropdown
   final String defaultOptionText;
+  /// Holds the text in the label attached to the dropdown
   final String dropdownLabelTitle;
+  /// The endpoint to fetch the data that gets used by the dropdown
   final String urlToFetchData;
+  /// A list which holds the data received from the endpoint
   final List<String> dataSource;
 
   @override
@@ -35,6 +39,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     _loadData();
   }
 
+  /// Fetches the data that the dropdown uses from the endpoint
   void _loadData() async {
     _data = [];
     if (widget.urlToFetchData.isNotEmpty) {
