@@ -26,6 +26,7 @@ An Enhanced Dropdown Widget (or EDW), is based on flutter's dropdown widget, but
 
 ```
 new EnhancedDropDownWidget(
+    key: UniqueKey(),
     dropdownLabelTitle: "Label",
     defaultOptionText: "Select One",
     urlToFetchData: "https://pub.dev/",
