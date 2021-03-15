@@ -8,20 +8,23 @@ class EnhancedDropDown extends StatefulWidget {
   final ValueChanged<String> valueReturned;
 
   EnhancedDropDown(
-      {Key key,
+      {required Key key,
       this.dropdownLabelTitle: "",
-      this.dataSource,
+      required this.dataSource,
       this.defaultOptionText: "",
       this.urlToFetchData: "",
-      this.valueReturned})
+      required this.valueReturned})
       : super(key: key);
 
   /// Holds the default text to show when nothing is selected in the dropdown
   final String defaultOptionText;
+
   /// Holds the text in the label attached to the dropdown
   final String dropdownLabelTitle;
+
   /// The endpoint to fetch the data that gets used by the dropdown
   final String urlToFetchData;
+
   /// A list which holds the data received from the endpoint
   final List<String> dataSource;
 
@@ -31,7 +34,7 @@ class EnhancedDropDown extends StatefulWidget {
 
 class _EnhancedDropDownState extends State<EnhancedDropDown> {
   List<DropdownMenuItem<String>> _data = [];
-  String _selected;
+  String _selected = "";
 
   @override
   void initState() {
@@ -43,7 +46,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   void _loadData() async {
     _data = [];
     if (widget.urlToFetchData.isNotEmpty) {
-      var response = await http.get(widget.urlToFetchData);
+      var url = Uri.https(widget.urlToFetchData, "");
+      var response = await http.get(url);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = convert.jsonDecode(response.body);
         List<DropdownMenuItem<String>> menuItems = [];
@@ -83,7 +87,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
               items: _data,
               hint: new Text(widget.defaultOptionText),
               onChanged: (value) {
-                _selected = value;
+                _selected = value as String;
                 widget.valueReturned(_selected);
                 setState(() {});
               })

@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(key: UniqueKey(), title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({required Key key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Center(
                 child: new EnhancedDropDown(
+                  key: UniqueKey(),
                   dropdownLabelTitle: "Label",
                   defaultOptionText: "Select One",
                   urlToFetchData: "https://pub.dev/",
