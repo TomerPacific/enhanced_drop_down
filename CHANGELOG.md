@@ -1,4 +1,6 @@
-## [0.1.3] - Upgraded dependency of http library to 0.12.2, added documentationfl
+## [0.1.4] - Upgraded dependency of http library to 0.13.0 and made changes according to it's changed API, added required attributes
+
+## [0.1.3] - Upgraded dependency of http library to 0.12.2, added documentation
 
 ## [0.1.2] - Shortened description of package and formatted main dart file
 
