@@ -1,15 +1,15 @@
 name: enhanced_drop_down
 description: A completely customizable drop down widget that comes with a label built in. You can customize the label, the data, the default value and more.
-version: 0.1.3
+version: 0.1.4
 homepage: https://github.com/TomerPacific
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.12.2
+  http: ^0.13.0
 
 dev_dependencies:
   flutter_test:
