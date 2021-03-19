@@ -1,4 +1,6 @@
-## [0.1.4] - Upgraded dependency of http library to 0.13.0 and made changes according to it's changed API, added required attributes
+## [0.1.5] - Refactored entire API, exposed two ways to instantiate widget
+
+## [0.1.4] - Upgraded dependency of http library to 0.13.0 and made changes according to it's changed API, added required attributes (opted to Null safety)
 
 ## [0.1.3] - Upgraded dependency of http library to 0.12.2, added documentation
 
