@@ -6,11 +6,13 @@ import 'package:enhanced_drop_down/enhanced_drop_down.dart';
 
 void main() {
   testWidgets("Testing widget creation", (WidgetTester tester) async {
-    var widget = EnhancedDropDown(defaultOptionText: "Choose Me",
+    var widget = EnhancedDropDown.withData(
+        defaultOptionText: "Choose Me",
         dropdownLabelTitle: "Label",
         dataSource: ["A", "B"],
-        urlToFetchData: "",
-        valueReturned: null);
+        valueReturned: (chosenOption) {
+          print(chosenOption);
+        });
 
     await tester.pumpWidget(
       StatefulBuilder(
@@ -32,11 +34,12 @@ void main() {
 
 
   testWidgets("Testing widget creation", (WidgetTester tester) async {
-    var widget = EnhancedDropDown(defaultOptionText: "Choose Me",
+    var widget = EnhancedDropDown.withData(defaultOptionText: "Choose Me",
         dropdownLabelTitle: "Label",
         dataSource: ["A"],
-        urlToFetchData: "",
-        valueReturned: null);
+        valueReturned: (chosenOption) {
+          print(chosenOption);
+        });
 
     await tester.pumpWidget(
       StatefulBuilder(
