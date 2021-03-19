@@ -40,11 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Center(
-                child: new EnhancedDropDown(
-                  key: UniqueKey(),
+                child: new EnhancedDropDown.withData(
                   dropdownLabelTitle: "Label",
                   defaultOptionText: "Select One",
-                  urlToFetchData: "https://pub.dev/",
                   dataSource: ["Option A", "Option B"],
                   valueReturned: (chosen) {
                     _selected = chosen;
