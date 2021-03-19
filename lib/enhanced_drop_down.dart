@@ -10,16 +10,18 @@ class EnhancedDropDown extends StatefulWidget {
   ///Constructor that accepts a list of elements to be the data source for the dropdown
   EnhancedDropDown.withData(
       {required this.dropdownLabelTitle,
-        required this.dataSource,
-        required this.defaultOptionText,
-        required this.valueReturned}) : urlToFetchData = null;
+      required this.dataSource,
+      required this.defaultOptionText,
+      required this.valueReturned})
+      : urlToFetchData = null;
 
   ///Constructor that accepts an endpoint in URI form to fetch the data from
-  EnhancedDropDown.withEndpoint({
-    required this.dropdownLabelTitle,
-    required this.defaultOptionText,
-    required this.urlToFetchData,
-    required this.valueReturned}) : dataSource = null;
+  EnhancedDropDown.withEndpoint(
+      {required this.dropdownLabelTitle,
+      required this.defaultOptionText,
+      required this.urlToFetchData,
+      required this.valueReturned})
+      : dataSource = null;
 
   /// Holds the default text to show when nothing is selected in the dropdown
   final String defaultOptionText;
@@ -71,7 +73,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
           _data = menuItems;
         });
       } else {
-        print("EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
+        print(
+            "EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
       }
     } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
@@ -92,11 +95,12 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       return new Container();
     } else {
       return new Container(
-        height: 100,
+          height: 100,
           child: new Column(
-        children: <Widget>[
-          new Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
-          DropdownButton(
+            children: <Widget>[
+              new Text(widget.dropdownLabelTitle,
+                  textDirection: TextDirection.ltr),
+              DropdownButton(
                   value: _selected,
                   items: _data,
                   hint: new Text(widget.defaultOptionText),
@@ -105,8 +109,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
                     widget.valueReturned(_selected);
                     setState(() {});
                   })
-        ],
-      ));
+            ],
+          ));
     }
   }
 }
