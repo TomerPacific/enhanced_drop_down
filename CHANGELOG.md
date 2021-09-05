@@ -1,3 +1,5 @@
+## [0.1.7] - Adding screenshots to readme, updating example project
+
 ## [0.1.6] - Formatting fixes
 
 ## [0.1.5] - Refactored entire API, exposed two ways to instantiate widget
