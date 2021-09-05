@@ -47,3 +47,7 @@ EnhancedDropDown.withEndpoint(
                    print(chosen);
                })
 ```
+
+![Widget Screenshot 1](/graphics/screenshot_1.png)
+
+![Widget Screenshot 2](/graphics/screenshot_2.png)
