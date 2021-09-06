@@ -1,3 +1,5 @@
+## [0.1.7+1] - Correcting screenshots in readme
+
 ## [0.1.7] - Adding screenshots to readme, updating example project
 
 ## [0.1.6] - Formatting fixes
