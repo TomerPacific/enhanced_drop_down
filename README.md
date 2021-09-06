@@ -48,6 +48,6 @@ EnhancedDropDown.withEndpoint(
                })
 ```
 
-![Widget Screenshot 1](/graphics/screenshot_1.png)
+![Widget Screenshot 1](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true)
 
-![Widget Screenshot 2](/graphics/screenshot_2.png)
+![Widget Screenshot 2](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true)
