@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
 class EnhancedDropDown extends StatefulWidget {
-  final ValueChanged<String> valueReturned;
+  final ValueChanged<dynamic> valueReturned;
 
   ///Constructor that accepts a list of elements to be the data source for the dropdown
   EnhancedDropDown.withData(
@@ -13,7 +13,7 @@ class EnhancedDropDown extends StatefulWidget {
       required this.dataSource,
       required this.defaultOptionText,
       required this.valueReturned})
-      : urlToFetchData = null;
+      : urlToFetchData = null, fieldToPresent = null;
 
   ///Constructor that accepts an endpoint in URI form to fetch the data from
   EnhancedDropDown.withEndpoint(
@@ -21,7 +21,15 @@ class EnhancedDropDown extends StatefulWidget {
       required this.defaultOptionText,
       required this.urlToFetchData,
       required this.valueReturned})
-      : dataSource = null;
+      : dataSource = null, fieldToPresent = null;
+
+  EnhancedDropDown.withDataObject(
+  {required this.dropdownLabelTitle,
+    required this.defaultOptionText,
+    required this.dataSource,
+    required this.valueReturned,
+    required this.fieldToPresent,
+  }): urlToFetchData = null;
 
   /// Holds the default text to show when nothing is selected in the dropdown
   final String defaultOptionText;
@@ -33,14 +41,16 @@ class EnhancedDropDown extends StatefulWidget {
   final Uri? urlToFetchData;
 
   /// A list which holds the data if we don't want to make a network request
-  final List<String>? dataSource;
+  final List<dynamic>? dataSource;
+
+  final dynamic fieldToPresent;
 
   @override
   _EnhancedDropDownState createState() => _EnhancedDropDownState();
 }
 
 class _EnhancedDropDownState extends State<EnhancedDropDown> {
-  List<DropdownMenuItem<String>> _data = [];
+  List<DropdownMenuItem<dynamic>> _data = [];
   String _selected = "Chosen Value";
 
   @override
@@ -53,7 +63,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   void _loadDataForDropdown() async {
     _data = const [];
 
-    List<DropdownMenuItem<String>> menuItems = [];
+    List<DropdownMenuItem<dynamic>> menuItems = [];
     menuItems.add(new DropdownMenuItem(
       child: new Text(_selected),
       value: _selected,
@@ -78,10 +88,13 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       }
     } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
-        menuItems.add(new DropdownMenuItem(
-          child: new Text(widget.dataSource![i]),
-          value: widget.dataSource![i],
-        ));
+        String dropdownValue = _getDropdownValue(widget.dataSource![i]);
+        menuItems.add(
+            new DropdownMenuItem(
+                child:
+                  new Text(dropdownValue),
+                value:  dropdownValue)
+        );
       }
       setState(() {
         _data = menuItems;
@@ -100,17 +113,33 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             children: <Widget>[
               new Text(widget.dropdownLabelTitle,
                   textDirection: TextDirection.ltr),
-              DropdownButton(
+              DropdownButton<dynamic>(
                   value: _selected,
                   items: _data,
                   hint: new Text(widget.defaultOptionText),
                   onChanged: (value) {
-                    _selected = value as String;
+                    _selected = value.toString();
                     widget.valueReturned(_selected);
                     setState(() {});
                   })
             ],
           ));
     }
+  }
+
+  String _getDropdownValue(dynamic itemData) {
+    String dropdownValue;
+    if (widget.fieldToPresent != null) {
+      try {
+        Map<String, dynamic> item = itemData.toJson();
+        dropdownValue = item[widget.fieldToPresent];
+      } catch (error) {
+        throw Exception("EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
+      }
+    } else {
+      dropdownValue = itemData;
+    }
+
+    return dropdownValue;
   }
 }
