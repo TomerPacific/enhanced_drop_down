@@ -83,8 +83,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
           _data = menuItems;
         });
       } else {
-        print(
-            "EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
+        print("EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
       }
     } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
