@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            EnhancedDropDown.withDataObject(
+            EnhancedDropDown.withData(
                 dropdownLabelTitle: "EDW With Data Object",
                 dataSource: [new Person("First", "Last", 10),
                               new Person("Last", "First", 20)],
