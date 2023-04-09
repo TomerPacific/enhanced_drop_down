@@ -9,27 +9,20 @@ class EnhancedDropDown extends StatefulWidget {
 
   ///Constructor that accepts a list of elements to be the data source for the dropdown
   EnhancedDropDown.withData(
-      {required this.dropdownLabelTitle,
-      required this.dataSource,
-      required this.defaultOptionText,
-      required this.valueReturned})
-      : urlToFetchData = null, fieldToPresent = null;
+      { required this.dropdownLabelTitle,
+        required this.dataSource,
+        required this.defaultOptionText,
+        required this.valueReturned,
+        this.fieldToPresent }
+      ) : urlToFetchData = null;
 
   ///Constructor that accepts an endpoint in URI form to fetch the data from
   EnhancedDropDown.withEndpoint(
-      {required this.dropdownLabelTitle,
-      required this.defaultOptionText,
-      required this.urlToFetchData,
-      required this.valueReturned})
-      : dataSource = null, fieldToPresent = null;
-
-  EnhancedDropDown.withDataObject(
-  {required this.dropdownLabelTitle,
-    required this.defaultOptionText,
-    required this.dataSource,
-    required this.valueReturned,
-    required this.fieldToPresent,
-  }): urlToFetchData = null;
+      { required this.dropdownLabelTitle,
+        required this.defaultOptionText,
+        required this.urlToFetchData,
+        required this.valueReturned }
+      ) : dataSource = null, fieldToPresent = null;
 
   /// Holds the default text to show when nothing is selected in the dropdown
   final String defaultOptionText;
@@ -43,7 +36,7 @@ class EnhancedDropDown extends StatefulWidget {
   /// A list which holds the data if we don't want to make a network request
   final List<dynamic>? dataSource;
 
-  final dynamic fieldToPresent;
+  final String? fieldToPresent;
 
   @override
   _EnhancedDropDownState createState() => _EnhancedDropDownState();
