@@ -21,8 +21,10 @@ An Enhanced Dropdown Widget (or EDW), is based on flutter's dropdown widget, but
 
 **Please be aware that currently, the parsing of the url is in JSON and only valid for key-value pairs that are in String format and type**
 
+- If you want to use a custom object as your data for the EDW, you must implement the toJson and fromJson methods inside of your class (see person.dart for reference)
+    - If not, an exception will be thrown when parsing the data for the EDW
 
-### Instantiating an EDW can be done in two ways:
+### Instantiating an EDW can be done in three ways:
 
 1. The data source can be an endpoint (of Uri type)
 
@@ -36,7 +38,7 @@ EnhancedDropDown.withEndpoint(
             })
 ```
 
-2. The data source can be a list of items
+2. The data source can be a list of items (of String type)
 
 ```
  EnhancedDropDown.withData(
@@ -46,6 +48,20 @@ EnhancedDropDown.withEndpoint(
                 valueReturned: (chosen) {
                    print(chosen);
                })
+```
+
+3. The data source can be a custom object
+
+```
+EnhancedDropDown.withDataObject(
+                dropdownLabelTitle: "My People",
+                dataSource: [new Person("First", "Last", 10),
+                              new Person("Last", "First", 20)],
+                defaultOptionText: "Choose Person",
+                valueReturned: (chosen) {
+                  print(chosen);
+                },
+                fieldToPresent: "firstName")
 ```
 
 ![Widget Screenshot 1](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true)
