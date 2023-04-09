@@ -64,35 +64,12 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     ));
 
     if (widget.urlToFetchData != null) {
-      var response = await http.get(widget.urlToFetchData!);
-      if (response.statusCode == 200) {
-       dynamic jsonResponse = convert.jsonDecode(response.body);
-       if (jsonResponse is List<dynamic>) {
-         for (final item in jsonResponse) {
-           String dropdownItemData = _getDropdownValue(item, true);
-           menuItems.add(
-               new DropdownMenuItem(
-                 child: new Text(dropdownItemData),
-                 value: dropdownItemData,
-               ));
-         }
-       } else if (jsonResponse is Map<String, dynamic>) {
-         jsonResponse.forEach((key, value) {
-             String dropdownItemData = _getDropdownValue(value, false);
-             menuItems.add(
-                 new DropdownMenuItem(
-                   child: new Text(dropdownItemData),
-                   value: dropdownItemData,
-                 ));
-           });
-       }
-        setState(() {
-          _data = menuItems;
-        });
-      } else {
-        print("EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
-      }
-    } else if (widget.dataSource != null) {
+        _fetchAndParseData(widget.urlToFetchData!, menuItems).then((value) =>
+            setState(() {
+              _data = value;
+            })
+        );
+      } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
         String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
         menuItems.add(
@@ -131,6 +108,38 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             ],
           ));
     }
+  }
+
+  Future<List<DropdownMenuItem<dynamic>>> _fetchAndParseData(
+      Uri url,
+      List<DropdownMenuItem<dynamic>> menuItems) async {
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      dynamic jsonResponse = convert.jsonDecode(response.body);
+      if (jsonResponse is List<dynamic>) {
+        for (final item in jsonResponse) {
+          String dropdownItemData = _getDropdownValue(item, true);
+          menuItems.add(
+              new DropdownMenuItem(
+                child: new Text(dropdownItemData),
+                value: dropdownItemData,
+              ));
+        }
+      } else if (jsonResponse is Map<String, dynamic>) {
+        jsonResponse.forEach((key, value) {
+          String dropdownItemData = _getDropdownValue(value, false);
+          menuItems.add(
+              new DropdownMenuItem(
+                child: new Text(dropdownItemData),
+                value: dropdownItemData,
+              ));
+        });
+      }
+    } else {
+      print("EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
+    }
+
+    return menuItems;
   }
 
   String _getDropdownValue(dynamic itemData, bool isFromList) {
