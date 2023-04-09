@@ -21,8 +21,9 @@ class EnhancedDropDown extends StatefulWidget {
       { required this.dropdownLabelTitle,
         required this.defaultOptionText,
         required this.urlToFetchData,
-        required this.valueReturned }
-      ) : dataSource = null, fieldToPresent = null;
+        required this.valueReturned,
+        this.fieldToPresent }
+      ) : dataSource = null;
 
   /// Holds the default text to show when nothing is selected in the dropdown
   final String defaultOptionText;
@@ -65,13 +66,26 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     if (widget.urlToFetchData != null) {
       var response = await http.get(widget.urlToFetchData!);
       if (response.statusCode == 200) {
-        Map<String, dynamic> jsonResponse = convert.jsonDecode(response.body);
-        jsonResponse.forEach((key, value) {
-          menuItems.add(new DropdownMenuItem(
-            child: new Text(value.toString()),
-            value: value.toString(),
-          ));
-        });
+       dynamic jsonResponse = convert.jsonDecode(response.body);
+       if (jsonResponse is List<dynamic>) {
+         for (final item in jsonResponse) {
+           String dropdownItemData = _getDropdownValue(item, true);
+           menuItems.add(
+               new DropdownMenuItem(
+                 child: new Text(dropdownItemData),
+                 value: dropdownItemData,
+               ));
+         }
+       } else if (jsonResponse is Map<String, dynamic>) {
+         jsonResponse.forEach((key, value) {
+             String dropdownItemData = _getDropdownValue(value, false);
+             menuItems.add(
+                 new DropdownMenuItem(
+                   child: new Text(dropdownItemData),
+                   value: dropdownItemData,
+                 ));
+           });
+       }
         setState(() {
           _data = menuItems;
         });
@@ -80,7 +94,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       }
     } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
-        String dropdownValue = _getDropdownValue(widget.dataSource![i]);
+        String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
         menuItems.add(
             new DropdownMenuItem(
                 child:
@@ -119,14 +133,18 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     }
   }
 
-  String _getDropdownValue(dynamic itemData) {
+  String _getDropdownValue(dynamic itemData, bool isFromList) {
     String dropdownValue;
     if (widget.fieldToPresent != null) {
-      try {
-        Map<String, dynamic> item = itemData.toJson();
-        dropdownValue = item[widget.fieldToPresent];
-      } catch (error) {
-        throw Exception("EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
+      if (isFromList) {
+        dropdownValue = itemData[widget.fieldToPresent];
+      } else {
+        try {
+          Map<String, dynamic> item = itemData.toJson();
+          dropdownValue = item[widget.fieldToPresent];
+        } catch (error) {
+          throw Exception("EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
+        }
       }
     } else {
       dropdownValue = itemData;
