@@ -9,21 +9,21 @@ class EnhancedDropDown extends StatefulWidget {
 
   ///Constructor that accepts a list of elements to be the data source for the dropdown
   EnhancedDropDown.withData(
-      { required this.dropdownLabelTitle,
-        required this.dataSource,
-        required this.defaultOptionText,
-        required this.valueReturned,
-        this.fieldToPresent }
-      ) : urlToFetchData = null;
+      {required this.dropdownLabelTitle,
+      required this.dataSource,
+      required this.defaultOptionText,
+      required this.valueReturned,
+      this.fieldToPresent})
+      : urlToFetchData = null;
 
   ///Constructor that accepts an endpoint in URI form to fetch the data from
   EnhancedDropDown.withEndpoint(
-      { required this.dropdownLabelTitle,
-        required this.defaultOptionText,
-        required this.urlToFetchData,
-        required this.valueReturned,
-        this.fieldToPresent }
-      ) : dataSource = null;
+      {required this.dropdownLabelTitle,
+      required this.defaultOptionText,
+      required this.urlToFetchData,
+      required this.valueReturned,
+      this.fieldToPresent})
+      : dataSource = null;
 
   /// Holds the default text to show when nothing is selected in the dropdown
   final String defaultOptionText;
@@ -64,21 +64,16 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     ));
 
     if (widget.urlToFetchData != null) {
-        _fetchAndParseData(widget.urlToFetchData!, menuItems).then((value) =>
-            setState(() {
-              _data = value;
-            })
-        );
-      } else if (widget.dataSource != null) {
-          for (int i = 0; i < widget.dataSource!.length; i++) {
-            String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
-            menuItems.add(
-                new DropdownMenuItem(
-                    child:
-                      new Text(dropdownValue),
-                    value:  dropdownValue)
-            );
-        }
+      _fetchAndParseData(widget.urlToFetchData!, menuItems)
+          .then((value) => setState(() {
+                _data = value;
+              }));
+    } else if (widget.dataSource != null) {
+      for (int i = 0; i < widget.dataSource!.length; i++) {
+        String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
+        menuItems.add(new DropdownMenuItem(
+            child: new Text(dropdownValue), value: dropdownValue));
+      }
       setState(() {
         _data = menuItems;
       });
@@ -111,32 +106,30 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   }
 
   Future<List<DropdownMenuItem<dynamic>>> _fetchAndParseData(
-      Uri url,
-      List<DropdownMenuItem<dynamic>> menuItems) async {
+      Uri url, List<DropdownMenuItem<dynamic>> menuItems) async {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       dynamic jsonResponse = convert.jsonDecode(response.body);
       if (jsonResponse is List<dynamic>) {
         for (final item in jsonResponse) {
           String dropdownItemData = _getDropdownValue(item, true);
-          menuItems.add(
-              new DropdownMenuItem(
-                child: new Text(dropdownItemData),
-                value: dropdownItemData,
-              ));
+          menuItems.add(new DropdownMenuItem(
+            child: new Text(dropdownItemData),
+            value: dropdownItemData,
+          ));
         }
       } else if (jsonResponse is Map<String, dynamic>) {
         jsonResponse.forEach((key, value) {
           String dropdownItemData = _getDropdownValue(value, false);
-          menuItems.add(
-              new DropdownMenuItem(
-                child: new Text(dropdownItemData),
-                value: dropdownItemData,
-              ));
+          menuItems.add(new DropdownMenuItem(
+            child: new Text(dropdownItemData),
+            value: dropdownItemData,
+          ));
         });
       }
     } else {
-      print("EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
+      print(
+          "EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
     }
 
     return menuItems;
@@ -152,7 +145,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
           Map<String, dynamic> item = itemData.toJson();
           dropdownValue = item[widget.fieldToPresent];
         } catch (error) {
-          throw Exception("EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
+          throw Exception(
+              "EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
         }
       }
     } else {

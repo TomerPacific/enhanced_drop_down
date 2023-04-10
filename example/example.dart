@@ -27,7 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   String _selected = "";
 
   @override
@@ -36,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Requesting Location Permission'),
         ),
-        body:Column(
+        body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Center(
@@ -49,8 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     print(_selected);
                   },
                 ),
-              )]
-        )
-    );
+              )
+            ]));
   }
 }
