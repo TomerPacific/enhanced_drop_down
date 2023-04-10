@@ -1,3 +1,5 @@
+## [0.2.0] - Updating API to support JSON response of custom objects
+
 ## [0.1.7+1] - Correcting screenshots in readme
 
 ## [0.1.7] - Adding screenshots to readme, updating example project
