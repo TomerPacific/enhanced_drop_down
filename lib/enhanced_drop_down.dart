@@ -70,15 +70,15 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             })
         );
       } else if (widget.dataSource != null) {
-      for (int i = 0; i < widget.dataSource!.length; i++) {
-        String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
-        menuItems.add(
-            new DropdownMenuItem(
-                child:
-                  new Text(dropdownValue),
-                value:  dropdownValue)
-        );
-      }
+          for (int i = 0; i < widget.dataSource!.length; i++) {
+            String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
+            menuItems.add(
+                new DropdownMenuItem(
+                    child:
+                      new Text(dropdownValue),
+                    value:  dropdownValue)
+            );
+        }
       setState(() {
         _data = menuItems;
       });
@@ -142,10 +142,10 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     return menuItems;
   }
 
-  String _getDropdownValue(dynamic itemData, bool isFromList) {
+  String _getDropdownValue(dynamic itemData, bool isElementPartOfList) {
     String dropdownValue;
     if (widget.fieldToPresent != null) {
-      if (isFromList) {
+      if (isElementPartOfList) {
         dropdownValue = itemData[widget.fieldToPresent];
       } else {
         try {
