@@ -70,21 +70,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 fieldToPresent: "firstName"),
             EnhancedDropDown.withData(
-                dropdownLabelTitle: "EDW With Data",
+                dropdownLabelTitle: "EDW With Data (String)",
                 dataSource: ["A", "B"],
                 defaultOptionText: "A",
                 valueReturned: (chosen) {
                   print(chosen);
                 }),
            EnhancedDropDown.withEndpoint(
-            dropdownLabelTitle: "EDW With Endpoint",
+            dropdownLabelTitle: "EDW With Endpoint (One Object)",
             defaultOptionText: "Choose",
             urlToFetchData: Uri.https("run.mocky.io","/v3/babc0845-8163-4f1e-80df-9bcabd3d4c43"),
             valueReturned: (chosen) {
               print(chosen);
             }),
             EnhancedDropDown.withEndpoint(
-                dropdownLabelTitle: "EDW With Endpoint And Object",
+                dropdownLabelTitle: "EDW With Endpoint Object (List of Objects)",
                 defaultOptionText: "Choose",
                 urlToFetchData: Uri.https("run.mocky.io","/v3/cf19bc4e-fed5-4e95-9282-7a46cf24c505"),
                 valueReturned: (chosen) {
