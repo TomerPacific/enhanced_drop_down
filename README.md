@@ -24,7 +24,7 @@ An Enhanced Dropdown Widget (or EDW), is based on flutter's dropdown widget, but
         - If not, an exception will be thrown when parsing the data for the EDW
     - Pass in the desired field to show in the dropdown using fieldToPresent
 
-### Instantiating an EDW can be done in two ways:
+## Instantiating an EDW can be done in two ways:
 
 1. The data source can be an endpoint (of Uri type)
 
@@ -49,6 +49,8 @@ EnhancedDropDown.withEndpoint(
                    print(chosen);
                })
 ```
+
+## Working With A Custom Object As The Data Source
 
 To give an example of the aforementioned usage of a custom object in your data, you need to use the **fieldToPresent** argument.
 
