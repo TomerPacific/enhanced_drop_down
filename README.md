@@ -69,3 +69,9 @@ You can see the implementation of Person inside the example project
 ![Widget Screenshot 1](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true)
 
 ![Widget Screenshot 2](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true)
+
+![Widget Screenshot 3](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_3.png?raw=true)
+
+![Widget Screenshot 4](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_4.png?raw=true)
+
+![Widget Screenshot 5](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_5.png?raw=true)
