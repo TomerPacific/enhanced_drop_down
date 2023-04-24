@@ -64,7 +64,36 @@ EnhancedDropDown.withData(
                 fieldToPresent: "firstName")
 ```
 
-You can see the implementation of Person inside the example project
+You can see the implementation of Person inside the example project (and below):
+
+```
+class Person {
+  String firstName;
+  String lastName;
+  int age;
+
+  Person(String _firstName, String _lastName, int _age) {
+    firstName = _firstName;
+    lastName = _lastName;
+    age = _age;
+  }
+
+  Person.fromJson(Map<String, dynamic> json) {
+    firstName = json["firstName"];
+    lastName = json["lastName"];
+    age = json["age"];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data["firstName"] = firstName;
+    data["lastName"] = lastName;
+    data["age"] = age;
+    return data;
+  }
+}
+
+```
 
 ![Widget Screenshot 1](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true)
 
