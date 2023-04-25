@@ -18,11 +18,8 @@ An Enhanced Dropdown Widget (or EDW), is based on flutter's dropdown widget, but
 - You want to know what choice the user made, so a callback function must be supplied to get the user's choice back
 
 - In case you are relying on an external source to provide the data for the dropdown, you can pass in the url to fetch that data
-
-- If you want to use a custom object as your data for the EDW, **you must**:
-    - Implement the toJson and fromJson methods inside of your class (see person.dart for reference)
-        - If not, an exception will be thrown when parsing the data for the EDW
-    - Pass in the desired field to show in the dropdown using fieldToPresent
+    - This data can be one object with many fields
+    - Or a list of objects
 
 ## Instantiating an EDW can be done in two ways:
 
@@ -52,7 +49,10 @@ EnhancedDropDown.withEndpoint(
 
 ## Working With A Custom Object As The Data Source
 
-To give an example of the aforementioned usage of a custom object in your data, you need to use the **fieldToPresent** argument.
+If you want to use a custom object as your data for the EDW, **you must**:
+    - Implement the toJson and fromJson methods inside of your class (see person.dart for reference)
+        - If not, an exception will be thrown when parsing the data for the EDW
+    - Pass in the desired field (in String form) to show in the dropdown using fieldToPresent
 
 ```
 EnhancedDropDown.withData(
