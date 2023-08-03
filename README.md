@@ -50,7 +50,9 @@ EnhancedDropDown.withEndpoint(
 ## Working With A Custom Object As The Data Source
 
 If you want to use a custom object as your data for the EDW, **you must**:
+
     - Implement the toJson and fromJson methods inside of your class (see person.dart for reference)
+    
         - If not, an exception will be thrown when parsing the data for the EDW
 
         > E/flutter (14555): [ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Exception: EnhancedDropDownWidget did you remember to implement toJson on your custom object?
