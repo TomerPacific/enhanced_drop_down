@@ -1,7 +1,7 @@
 class Person {
-  String firstName;
-  String lastName;
-  int age;
+  String firstName = "";
+  String lastName = "";
+  int age = 0;
 
   Person(String _firstName, String _lastName, int _age) {
     firstName = _firstName;
