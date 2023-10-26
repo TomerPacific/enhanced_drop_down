@@ -102,12 +102,14 @@ class Person {
 
 ```
 
-![Widget Screenshot 1](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true)
+## Screenshots
 
-![Widget Screenshot 2](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true" width="35%" height="100%"/>
 
-![Widget Screenshot 3](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_3.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true" width="35%" height="100%"/>
 
-![Widget Screenshot 4](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_4.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_3.png?raw=true" width="35%" height="100%"/>
 
-![Widget Screenshot 5](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_5.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_4.png?raw=true" width="35%" height="100%"/>
+
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_5.png?raw=true" width="35%" height="100%"/>
