@@ -57,7 +57,7 @@ If you want to use a custom object as your data for the EDW, **you must**:
 
         > E/flutter (14555): [ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Exception: EnhancedDropDownWidget did you remember to implement toJson on your custom object?
 
-    - Pass in the desired field (in String form) to show in the dropdown using **fieldToPresent**
+- Pass in the desired field (in String form) to show in the dropdown using **fieldToPresent**
 
 ```
 EnhancedDropDown.withData(
