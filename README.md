@@ -51,13 +51,13 @@ EnhancedDropDown.withEndpoint(
 
 If you want to use a custom object as your data for the EDW, **you must**:
 
-    - Implement the toJson and fromJson methods inside of your class (see person.dart for reference)
+- Implement the toJson and fromJson methods inside of your class (see person.dart for reference)
 
-        - If not, an exception will be thrown when parsing the data for the EDW
+- If not, an exception will be thrown when parsing the data for the EDW
 
         > E/flutter (14555): [ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Exception: EnhancedDropDownWidget did you remember to implement toJson on your custom object?
 
-    - Pass in the desired field (in String form) to show in the dropdown using fieldToPresent
+- Pass in the desired field (in String form) to show in the dropdown using **fieldToPresent**
 
 ```
 EnhancedDropDown.withData(
@@ -102,12 +102,14 @@ class Person {
 
 ```
 
-![Widget Screenshot 1](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true)
+## Screenshots
 
-![Widget Screenshot 2](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true" width="35%" height="100%"/>
 
-![Widget Screenshot 3](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_3.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true" width="35%" height="100%"/>
 
-![Widget Screenshot 4](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_4.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_3.png?raw=true" width="35%" height="100%"/>
 
-![Widget Screenshot 5](https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_5.png?raw=true)
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_4.png?raw=true" width="35%" height="100%"/>
+
+<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_5.png?raw=true" width="35%" height="100%"/>
