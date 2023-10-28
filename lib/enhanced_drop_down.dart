@@ -37,6 +37,7 @@ class EnhancedDropDown extends StatefulWidget {
   /// A list which holds the data if we don't want to make a network request
   final List<dynamic>? dataSource;
 
+  /// Represents the field name where data will be read from if you choose a Custom Object as the data source
   final String? fieldToPresent;
 
   @override
@@ -105,6 +106,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     }
   }
 
+  /// Responsible for fetching the data the dropdown uses and then parsing it
   Future<List<DropdownMenuItem<dynamic>>> _fetchAndParseData(
       Uri url, List<DropdownMenuItem<dynamic>> menuItems) async {
     var response = await http.get(url);
@@ -135,6 +137,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     return menuItems;
   }
 
+  /// Used to correctly get a value from the data associated with the dropdown
   String _getDropdownValue(dynamic itemData, bool isElementPartOfList) {
     String dropdownValue;
     if (widget.fieldToPresent != null) {
