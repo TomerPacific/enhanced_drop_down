@@ -37,6 +37,7 @@ class EnhancedDropDown extends StatefulWidget {
   /// A list which holds the data if we don't want to make a network request
   final List<dynamic>? dataSource;
 
+  /// Represents the field name where data will be read from if you choose a Custom Object as the data source
   final String? fieldToPresent;
 
   @override
