@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "EDW With Endpoint Object (List of Objects)",
                   defaultOptionText: "Choose",
                   urlToFetchData: Uri.https("run.mocky.io",
-                      "/v3/957030dd-0f07-4e37-8ffc-cfc2f893eb58"),
+                      "/v3/2d23072f-123c-4852-abb5-bc5e1668a415"),
                   valueReturned: (chosen) {
                     print(chosen);
                   },
