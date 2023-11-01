@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   dropdownLabelTitle: "EDW With Endpoint (One Object)",
                   defaultOptionText: "Choose",
                   urlToFetchData: Uri.https("run.mocky.io",
-                      "/v3/babc0845-8163-4f1e-80df-9bcabd3d4c43"),
+                      "/v3/aceab7f3-ca9c-42f0-b63e-07dd501bb866"),
                   valueReturned: (chosen) {
                     print(chosen);
                   }),
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "EDW With Endpoint Object (List of Objects)",
                   defaultOptionText: "Choose",
                   urlToFetchData: Uri.https("run.mocky.io",
-                      "/v3/cf19bc4e-fed5-4e95-9282-7a46cf24c505"),
+                      "/v3/2d23072f-123c-4852-abb5-bc5e1668a415"),
                   valueReturned: (chosen) {
                     print(chosen);
                   },
