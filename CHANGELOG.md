@@ -1,3 +1,5 @@
+## [0.3.1+0] - Correcting README formatting, fixing example mocks, adding documentation for APIs
+
 ## [0.3.0+0] - Upgrading packages, support Dart version
 
 ## [0.2.0+2] - Improving documentation
