@@ -1,3 +1,5 @@
+## [0.3.2+0] - Officially supporting Dart 3
+
 ## [0.3.1+0] - Correcting README formatting, fixing example mocks, adding documentation for APIs
 
 ## [0.3.0+0] - Upgrading packages, support Dart version
