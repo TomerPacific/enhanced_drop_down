@@ -83,7 +83,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    if (_data.length == 0) {
+    if (_data.isEmpty) {
       return new Container();
     } else {
       return new Container(
