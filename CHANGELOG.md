@@ -1,3 +1,5 @@
+## [0.3.4+0] - Correcting usage of length instead of isEmpty
+
 ## [0.3.3+0] - Moved to Embedding V2
 
 ## [0.3.2+0] - Officially supporting Dart 3
