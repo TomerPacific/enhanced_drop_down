@@ -1,3 +1,6 @@
+## [0.3.4+1]
+    * Formatting changelog
+
 ## [0.3.4+0]
     * Correcting usage of length instead of isEmpty
 
