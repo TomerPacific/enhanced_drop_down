@@ -3,6 +3,7 @@
 .idea/
 .packages
 .pub/
+*.iml
 
 build/
 ios/.generated/
