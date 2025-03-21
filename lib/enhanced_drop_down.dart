@@ -59,8 +59,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     _data = const [];
 
     List<DropdownMenuItem<dynamic>> menuItems = [];
-    menuItems.add(new DropdownMenuItem(
-      child: new Text(_selected),
+    menuItems.add(DropdownMenuItem(
+      child: Text(_selected),
       value: _selected,
     ));
 
@@ -72,8 +72,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
         String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
-        menuItems.add(new DropdownMenuItem(
-            child: new Text(dropdownValue), value: dropdownValue));
+        menuItems.add(
+            DropdownMenuItem(child: Text(dropdownValue), value: dropdownValue));
       }
       setState(() {
         _data = menuItems;
@@ -84,18 +84,17 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   @override
   Widget build(BuildContext context) {
     if (_data.isEmpty) {
-      return new Container();
+      return Container();
     } else {
-      return new Container(
+      return Container(
           height: 100,
-          child: new Column(
+          child: Column(
             children: <Widget>[
-              new Text(widget.dropdownLabelTitle,
-                  textDirection: TextDirection.ltr),
+              Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
               DropdownButton<dynamic>(
                   value: _selected,
                   items: _data,
-                  hint: new Text(widget.defaultOptionText),
+                  hint: Text(widget.defaultOptionText),
                   onChanged: (value) {
                     _selected = value.toString();
                     widget.valueReturned(_selected);
@@ -115,16 +114,16 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       if (jsonResponse is List<dynamic>) {
         for (final item in jsonResponse) {
           String dropdownItemData = _getDropdownValue(item, true);
-          menuItems.add(new DropdownMenuItem(
-            child: new Text(dropdownItemData),
+          menuItems.add(DropdownMenuItem(
+            child: Text(dropdownItemData),
             value: dropdownItemData,
           ));
         }
       } else if (jsonResponse is Map<String, dynamic>) {
         jsonResponse.forEach((key, value) {
           String dropdownItemData = _getDropdownValue(value, false);
-          menuItems.add(new DropdownMenuItem(
-            child: new Text(dropdownItemData),
+          menuItems.add(DropdownMenuItem(
+            child: Text(dropdownItemData),
             value: dropdownItemData,
           ));
         });
