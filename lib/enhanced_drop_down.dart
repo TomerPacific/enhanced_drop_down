@@ -3,6 +3,7 @@ library enhanced_drop_down;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import 'dart:io';
 
 const CONTAINER_HEIGHT = 100.0;
 
@@ -114,7 +115,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
     try {
       var response = await http.get(url);
-      if (response.statusCode == 200) {
+      if (response.statusCode == HttpStatus.ok) {
         dynamic jsonResponse = convert.jsonDecode(response.body);
         if (jsonResponse is List<dynamic>) {
           for (final item in jsonResponse) {
