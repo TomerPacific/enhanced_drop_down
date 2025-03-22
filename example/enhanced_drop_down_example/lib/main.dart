@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                   defaultOptionText: "Choose Person",
                   valueReturned: (chosen) {
-                    print(chosen);
+                    print("EDW the first name of the person chosen is: $chosen");
                   },
                   fieldToPresent: "firstName"),
               EnhancedDropDown.withData(
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   dataSource: ["A", "B"],
                   defaultOptionText: "A",
                   valueReturned: (chosen) {
-                    print(chosen);
+                    print("EDW the chosen value is: $chosen");
                   }),
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle: "EDW With Endpoint (One Object)",
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   urlToFetchData: Uri.https("run.mocky.io",
                       "/v3/aceab7f3-ca9c-42f0-b63e-07dd501bb866"),
                   valueReturned: (chosen) {
-                    print(chosen);
+                    print("EDW the chosen value is: $chosen");
                   }),
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle:
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   urlToFetchData: Uri.https("run.mocky.io",
                       "/v3/2d23072f-123c-4852-abb5-bc5e1668a415"),
                   valueReturned: (chosen) {
-                    print(chosen);
+                    print("EDW the first name of the person chosen is: $chosen");
                   },
                   fieldToPresent: "firstName")
             ],
