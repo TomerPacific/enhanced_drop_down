@@ -45,7 +45,7 @@ class EnhancedDropDown extends StatefulWidget {
 }
 
 class _EnhancedDropDownState extends State<EnhancedDropDown> {
-  List<DropdownMenuItem<dynamic>> _data = [];
+  List<DropdownMenuItem<dynamic>> _dropDownItems = [];
   String _selected = "Chosen Value";
 
   @override
@@ -56,7 +56,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   /// Responsible for loading the data that the dropdown uses
   void _loadDataForDropdown() async {
-    _data = const [];
+    _dropDownItems = const [];
 
     List<DropdownMenuItem<dynamic>> menuItems = [];
     menuItems.add(DropdownMenuItem(
@@ -67,7 +67,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     if (widget.urlToFetchData != null) {
       _fetchAndParseData(widget.urlToFetchData!, menuItems)
           .then((value) => setState(() {
-                _data = value;
+                _dropDownItems = value;
               }));
     } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
@@ -76,14 +76,14 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             DropdownMenuItem(child: Text(dropdownValue), value: dropdownValue));
       }
       setState(() {
-        _data = menuItems;
+        _dropDownItems = menuItems;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_data.isEmpty) {
+    if (_dropDownItems.isEmpty) {
       return Container();
     } else {
       return Container(
@@ -93,7 +93,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
               Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
               DropdownButton<dynamic>(
                   value: _selected,
-                  items: _data,
+                  items: _dropDownItems,
                   hint: Text(widget.defaultOptionText),
                   onChanged: (value) {
                     _selected = value.toString();
