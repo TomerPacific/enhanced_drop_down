@@ -75,8 +75,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     } else if (widget.dataSource != null) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
         String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
-        menuItems.add(
-            DropdownMenuItem(child: Text(dropdownValue), value: dropdownValue));
+        _addMenuItem(menuItems, dropdownValue);
       }
       setState(() {
         _dropDownItems = menuItems;
@@ -120,18 +119,12 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
         if (jsonResponse is List<dynamic>) {
           for (final item in jsonResponse) {
             String dropdownItemData = _getDropdownValue(item, true);
-            menuItems.add(DropdownMenuItem(
-              child: Text(dropdownItemData),
-              value: dropdownItemData,
-            ));
+            _addMenuItem(menuItems, dropdownItemData);
           }
         } else if (jsonResponse is Map<String, dynamic>) {
           jsonResponse.forEach((key, value) {
             String dropdownItemData = _getDropdownValue(value, false);
-            menuItems.add(DropdownMenuItem(
-              child: Text(dropdownItemData),
-              value: dropdownItemData,
-            ));
+            _addMenuItem(menuItems, dropdownItemData);
           });
         }
       } else {
@@ -166,4 +159,12 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
     return dropdownValue;
   }
+
+  void _addMenuItem(List<DropdownMenuItem<dynamic>> menuItems, String dropdownItemData) {
+    menuItems.add(DropdownMenuItem(
+      child: Text(dropdownItemData),
+      value: dropdownItemData,
+    ));
+  }
+  
 }
