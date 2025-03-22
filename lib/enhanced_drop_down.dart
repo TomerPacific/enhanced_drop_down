@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
+const CONTAINER_HEIGHT = 100.0;
+
 class EnhancedDropDown extends StatefulWidget {
   final ValueChanged<dynamic> valueReturned;
 
@@ -87,7 +89,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       return Container();
     } else {
       return Container(
-          height: 100,
+          height: CONTAINER_HEIGHT,
           child: Column(
             children: <Widget>[
               Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
