@@ -109,9 +109,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   /// Responsible for fetching the data the dropdown uses and then parsing it
   Future<List<DropdownMenuItem<dynamic>>> _fetchAndParseData(
-      Uri url,
-      List<DropdownMenuItem<dynamic>> menuItems) async {
-
+      Uri url, List<DropdownMenuItem<dynamic>> menuItems) async {
     try {
       var response = await http.get(url);
       if (response.statusCode == HttpStatus.ok) {
@@ -132,7 +130,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             "EnhancedDropDownWidget Request failed with status: ${response.statusCode}.");
       }
     } catch (e) {
-      print( "EnhancedDropDownWidget error fetching data: $e");
+      print("EnhancedDropDownWidget error fetching data: $e");
     }
 
     return menuItems;
@@ -160,11 +158,11 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     return dropdownValue;
   }
 
-  void _addMenuItem(List<DropdownMenuItem<dynamic>> menuItems, String dropdownItemData) {
+  void _addMenuItem(
+      List<DropdownMenuItem<dynamic>> menuItems, String dropdownItemData) {
     menuItems.add(DropdownMenuItem(
       child: Text(dropdownItemData),
       value: dropdownItemData,
     ));
   }
-  
 }
