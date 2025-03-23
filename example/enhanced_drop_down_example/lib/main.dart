@@ -49,8 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     new Person("Last", "First", 20)
                   ],
                   defaultOptionText: "Choose Person",
-                  valueReturned: (chosen) {
-                    print("EDW the first name of the person chosen is: $chosen");
+                  valueReturned: (chosenValue) {
+                    Person person = chosenValue as Person;
+                    print("EDW the person chosen is: ${person.toString()}");
                   },
                   fieldToPresent: "firstName"),
               EnhancedDropDown.withData(
@@ -77,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   valueReturned: (chosen) {
                     print("EDW the first name of the person chosen is: $chosen");
                   },
-                  fieldToPresent: "first_name")
+                  fieldToPresent: "firstName")
             ],
           ),
         ));
