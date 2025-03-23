@@ -6,6 +6,8 @@ void main() {
   runApp(MyApp());
 }
 
+const String ENDPOINT = "https://edw-server.onrender.com/edw/0";
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -45,8 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withData(
                   dropdownLabelTitle: "EDW With Data Object",
                   dataSource: [
-                    new Person("First", "Last", 10),
-                    new Person("Last", "First", 20)
+                    Person("First", "Last", 10),
+                    Person("Last", "First", 20)
                   ],
                   defaultOptionText: "Choose Person",
                   valueReturned: (chosenValue) {
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle: "EDW With Endpoint (One Object)",
                   defaultOptionText: "Choose",
-                  urlToFetchData: Uri.https("edw-server.onrender.com",
+                  urlToFetchData: Uri.https(ENDPOINT,
                       "/edw/0"),
                   valueReturned: (chosen) {
                     print("EDW the chosen value is: $chosen");
@@ -73,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   dropdownLabelTitle:
                       "EDW With Endpoint Object (List of Objects)",
                   defaultOptionText: "Choose",
-                  urlToFetchData: Uri.https("edw-server.onrender.com",
+                  urlToFetchData: Uri.https(ENDPOINT,
                       "/edw/1"),
                   valueReturned: (chosen) {
                     print("EDW the first name of the person chosen is: $chosen");
