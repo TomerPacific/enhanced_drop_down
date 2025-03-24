@@ -7,6 +7,9 @@ void main() {
 }
 
 const String ENDPOINT = "raw.githubusercontent.com";
+const String PATH = "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/";
+const String PERSON_PATH = PATH + "person.json";
+const String PERSON_LIST_PATH = PATH + "personList.json";
 
 class MyApp extends StatelessWidget {
   @override
@@ -65,9 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle: "EDW With Endpoint (One Object)",
                   defaultOptionText: "Choose a value",
-                  urlToFetchData: Uri.https(
-                      ENDPOINT,
-                      "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/person.json"),
+                  urlToFetchData: Uri.https(ENDPOINT, PERSON_PATH),
                   valueReturned: (chosen) {
                     print("EDW the chosen value is: $chosen");
                   },
@@ -76,8 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   dropdownLabelTitle:
                       "EDW With Endpoint Object (List of Objects)",
                   defaultOptionText: "Choose a value",
-                  urlToFetchData: Uri.https(ENDPOINT,
-                      "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/personList.json"),
+                  urlToFetchData: Uri.https(ENDPOINT, PERSON_LIST_PATH),
                   valueReturned: (chosen) {
                     print("EDW the first name of the person chosen is: $chosen");
                   },
