@@ -72,10 +72,11 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
                 _dropDownItems = value;
               }));
     } else if (_shouldGetDataFromDataSource(widget.dataSource)) {
-      for (int i = 0; i < widget.dataSource!.length; i++) {
-        String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
+      for (final dataSourceElement in widget.dataSource!) {
+        String dropdownValue = _getDropdownValue(dataSourceElement, false);
         _addMenuItem(menuItems, dropdownValue);
       }
+
       setState(() {
         _dropDownItems = menuItems;
       });
