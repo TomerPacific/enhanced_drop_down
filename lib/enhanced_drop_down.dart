@@ -62,16 +62,16 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     _dropDownItems = const [];
 
     List<DropdownMenuItem<dynamic>> menuItems = [];
-    
+
     //Adding default menu item
     _addMenuItem(menuItems, _selectedDropDownMenuItem);
 
-    if (widget.urlToFetchData != null) {
+    if (_shouldFetchDataFromUrl(widget.urlToFetchData)) {
       _fetchAndParseData(widget.urlToFetchData!, menuItems)
           .then((value) => setState(() {
                 _dropDownItems = value;
               }));
-    } else if (widget.dataSource != null) {
+    } else if (_shouldGetDataFromDataSource(widget.dataSource)) {
       for (int i = 0; i < widget.dataSource!.length; i++) {
         String dropdownValue = _getDropdownValue(widget.dataSource![i], false);
         _addMenuItem(menuItems, dropdownValue);
@@ -79,6 +79,9 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       setState(() {
         _dropDownItems = menuItems;
       });
+    } else {
+      throw Exception(
+          "EnhancedDropDownWidget did you remember to pass in a datasource or an endpoint?");
     }
   }
 
@@ -171,5 +174,13 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       child: Text(dropdownItemData),
       value: dropdownItemData,
     ));
+  }
+
+  bool _shouldFetchDataFromUrl(Uri? url) {
+    return url != null;
+  }
+
+  bool _shouldGetDataFromDataSource(List<dynamic>? dataSource) {
+    return dataSource != null && dataSource.length > 0;
   }
 }
