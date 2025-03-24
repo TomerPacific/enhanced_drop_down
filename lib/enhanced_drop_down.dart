@@ -49,7 +49,7 @@ class EnhancedDropDown extends StatefulWidget {
 
 class _EnhancedDropDownState extends State<EnhancedDropDown> {
   List<DropdownMenuItem<dynamic>> _dropDownItems = [];
-  String _selected = "Chosen Value";
+  String _selectedDropDownMenuItem = "Chosen Value";
 
   @override
   void initState() {
@@ -63,8 +63,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
     List<DropdownMenuItem<dynamic>> menuItems = [];
     menuItems.add(DropdownMenuItem(
-      child: Text(_selected),
-      value: _selected,
+      child: Text(_selectedDropDownMenuItem),
+      value: _selectedDropDownMenuItem,
     ));
 
     if (widget.urlToFetchData != null) {
@@ -94,12 +94,12 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             children: <Widget>[
               Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
               DropdownButton<dynamic>(
-                  value: _selected,
+                  value: _selectedDropDownMenuItem,
                   items: _dropDownItems,
                   hint: Text(widget.defaultOptionText),
                   onChanged: (value) {
-                    _selected = value.toString();
-                    widget.valueReturned(_selected);
+                    _selectedDropDownMenuItem = value.toString();
+                    widget.valueReturned(_selectedDropDownMenuItem);
                     setState(() {});
                   })
             ],
