@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   }),
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle: "EDW With Endpoint (One Object)",
-                  defaultOptionText: "Choose",
+                  defaultOptionText: "Choose a value",
                   urlToFetchData: Uri.https(
                       ENDPOINT,
                       "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/person.json"),
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle:
                       "EDW With Endpoint Object (List of Objects)",
-                  defaultOptionText: "Choose",
+                  defaultOptionText: "Choose a value",
                   urlToFetchData: Uri.https(ENDPOINT,
                       "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/personList.json"),
                   valueReturned: (chosen) {
