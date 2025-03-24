@@ -120,10 +120,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             _addMenuItem(menuItems, dropdownItemData);
           }
         } else if (jsonResponse is Map<String, dynamic>) {
-          jsonResponse.forEach((key, value) {
-            String dropdownItemData = _getDropdownValue(value, false);
+            String dropdownItemData = _getDropdownValue(jsonResponse, false);
             _addMenuItem(menuItems, dropdownItemData);
-          });
         }
       } else {
         print(
@@ -139,20 +137,30 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   /// Used to correctly get a value from the data associated with the dropdown
   String _getDropdownValue(dynamic itemData, bool isElementPartOfList) {
     String dropdownValue;
+
     if (widget.fieldToPresent != null) {
       if (isElementPartOfList) {
         dropdownValue = itemData[widget.fieldToPresent] ?? "";
       } else {
-        try {
-          Map<String, dynamic> item = itemData.toJson();
-          dropdownValue = item[widget.fieldToPresent] ?? "";
-        } catch (error) {
-          throw Exception(
-              "EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
-        }
+       try {
+          if (itemData is Map<String, dynamic>) {
+            dropdownValue = itemData[widget.fieldToPresent];
+          } else {
+            Map<String, dynamic> item = itemData.toJson();
+            dropdownValue = item[widget.fieldToPresent];
+          }
+       } catch (exception) {
+         throw Exception(
+             "EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
+       }
       }
     } else {
-      dropdownValue = itemData;
+      try {
+        dropdownValue = itemData;
+      } catch (exception) {
+        throw Exception(
+            "EnhancedDropDownWidget did you use a data object and not supply a fieldToPresent?");
+      }
     }
 
     return dropdownValue;
