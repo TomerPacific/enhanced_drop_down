@@ -62,10 +62,9 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     _dropDownItems = const [];
 
     List<DropdownMenuItem<dynamic>> menuItems = [];
-    menuItems.add(DropdownMenuItem(
-      child: Text(_selectedDropDownMenuItem),
-      value: _selectedDropDownMenuItem,
-    ));
+    
+    //Adding default menu item
+    _addMenuItem(menuItems, _selectedDropDownMenuItem);
 
     if (widget.urlToFetchData != null) {
       _fetchAndParseData(widget.urlToFetchData!, menuItems)
