@@ -6,7 +6,7 @@ void main() {
   runApp(MyApp());
 }
 
-const String ENDPOINT = "https://edw-server.onrender.com/edw/0";
+const String ENDPOINT = "raw.githubusercontent.com";
 
 class MyApp extends StatelessWidget {
   @override
@@ -52,8 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                   defaultOptionText: "Choose Person",
                   valueReturned: (chosenValue) {
-                    Person person = chosenValue as Person;
-                    print("EDW the person chosen is: ${person.toString()}");
+                    print("EDW the chosen value is: $chosenValue");
                   },
                   fieldToPresent: "firstName"),
               EnhancedDropDown.withData(
@@ -66,17 +65,19 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle: "EDW With Endpoint (One Object)",
                   defaultOptionText: "Choose",
-                  urlToFetchData: Uri.https(ENDPOINT,
-                      "/edw/0"),
+                  urlToFetchData: Uri.https(
+                      ENDPOINT,
+                      "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/person.json"),
                   valueReturned: (chosen) {
                     print("EDW the chosen value is: $chosen");
-                  }),
+                  },
+                  fieldToPresent: "firstName"),
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle:
                       "EDW With Endpoint Object (List of Objects)",
                   defaultOptionText: "Choose",
                   urlToFetchData: Uri.https(ENDPOINT,
-                      "/edw/1"),
+                      "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/personList.json"),
                   valueReturned: (chosen) {
                     print("EDW the first name of the person chosen is: $chosen");
                   },
