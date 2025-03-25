@@ -57,35 +57,6 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     _loadDataForDropdown();
   }
 
-  /// Responsible for loading the data that the dropdown uses
-  void _loadDataForDropdown() async {
-    _dropDownItems = const [];
-
-    List<DropdownMenuItem<dynamic>> menuItems = [];
-
-    //Adding default menu item
-    _addMenuItem(menuItems, _selectedDropDownMenuItem);
-
-    if (_shouldFetchDataFromUrl(widget.urlToFetchData)) {
-      _fetchAndParseData(widget.urlToFetchData!, menuItems)
-          .then((parsedDropDownMenuItems) => setState(() {
-                _dropDownItems = parsedDropDownMenuItems;
-              }));
-    } else if (_shouldGetDataFromDataSource(widget.dataSource)) {
-      for (final dataSourceElement in widget.dataSource!) {
-        String dropdownValue = _getDropdownValue(dataSourceElement, false);
-        _addMenuItem(menuItems, dropdownValue);
-      }
-
-      setState(() {
-        _dropDownItems = menuItems;
-      });
-    } else {
-      throw Exception(
-          "EnhancedDropDownWidget did you remember to pass in a datasource or an endpoint?");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     if (_dropDownItems.isEmpty) {
@@ -107,6 +78,38 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
                   })
             ],
           ));
+    }
+  }
+
+  /// Responsible for loading the data that the dropdown uses
+  void _loadDataForDropdown() async {
+    
+    if (!_shouldFetchDataFromUrl(widget.urlToFetchData) && !_shouldGetDataFromDataSource(widget.dataSource)) {
+      throw Exception(
+          "EnhancedDropDownWidget did you remember to pass in a datasource or an endpoint?");
+    }
+
+    _dropDownItems = const [];
+
+    List<DropdownMenuItem<dynamic>> menuItems = [];
+
+    //Adding default menu item
+    _addMenuItem(menuItems, _selectedDropDownMenuItem);
+
+    if (_shouldFetchDataFromUrl(widget.urlToFetchData)) {
+      _fetchAndParseData(widget.urlToFetchData!, menuItems)
+          .then((parsedDropDownMenuItems) => setState(() {
+                _dropDownItems = parsedDropDownMenuItems;
+              }));
+    } else if (_shouldGetDataFromDataSource(widget.dataSource)) {
+      for (final dataSourceElement in widget.dataSource!) {
+        String dropdownValue = _getDropdownValue(dataSourceElement, false);
+        _addMenuItem(menuItems, dropdownValue);
+      }
+
+      setState(() {
+        _dropDownItems = menuItems;
+      });
     }
   }
 
