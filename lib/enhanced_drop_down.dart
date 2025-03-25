@@ -140,34 +140,19 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   /// Used to correctly get a value from the data associated with the dropdown
   String _getDropdownValue(dynamic itemData, bool isElementPartOfList) {
-    String dropdownValue;
 
-    if (widget.fieldToPresent != null) {
-      if (isElementPartOfList) {
-        dropdownValue = itemData[widget.fieldToPresent] ?? "";
-      } else {
-       try {
-          if (itemData is Map<String, dynamic>) {
-            dropdownValue = itemData[widget.fieldToPresent];
-          } else {
-            Map<String, dynamic> item = itemData.toJson();
-            dropdownValue = item[widget.fieldToPresent];
-          }
-       } catch (exception) {
-         throw Exception(
-             "EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
-       }
-      }
-    } else {
-      try {
-        dropdownValue = itemData;
-      } catch (exception) {
-        throw Exception(
-            "EnhancedDropDownWidget did you use a data object and not supply a fieldToPresent?");
-      }
+    if (_isFieldToPresentSet(widget.fieldToPresent)) {
+      return isElementPartOfList ?
+      itemData[widget.fieldToPresent] :
+      _getDropdownValueFromSingleElement(itemData);
     }
 
-    return dropdownValue;
+    try {
+      return itemData as String;
+    } catch (exception) {
+      throw Exception(
+          "EnhancedDropDownWidget did you use a data object and not supply a fieldToPresent?");
+    }
   }
 
   void _addMenuItem(
@@ -183,6 +168,24 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   }
 
   bool _shouldGetDataFromDataSource(List<dynamic>? dataSource) {
-    return dataSource != null && dataSource.length > 0;
+    return dataSource != null && dataSource.isNotEmpty;
+  }
+
+  bool _isFieldToPresentSet(String? fieldToPresent) {
+    return fieldToPresent != null && fieldToPresent.isNotEmpty;
+  }
+
+  String _getDropdownValueFromSingleElement(dynamic itemData) {
+    try {
+      if (itemData is Map<String, dynamic>) {
+        return itemData[widget.fieldToPresent];
+      }
+
+      Map<String, dynamic> item = itemData.toJson();
+      return item[widget.fieldToPresent];
+    } catch (exception) {
+      throw Exception(
+          "EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
+    }
   }
 }
