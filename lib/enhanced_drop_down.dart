@@ -49,7 +49,7 @@ class EnhancedDropDown extends StatefulWidget {
 
 class _EnhancedDropDownState extends State<EnhancedDropDown> {
   List<DropdownMenuItem<dynamic>> _dropDownItems = [];
-  String _selectedDropDownMenuItem = "Chosen Value";
+  String _selectedDropDownMenuItem = "";
 
   @override
   void initState() {
@@ -68,9 +68,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             children: <Widget>[
               Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
               DropdownButton<dynamic>(
-                  value: _selectedDropDownMenuItem,
+                  value: _selectedDropDownMenuItem.isEmpty? widget.defaultOptionText : _selectedDropDownMenuItem,
                   items: _dropDownItems,
-                  hint: Text(widget.defaultOptionText),
                   onChanged: (value) {
                     _selectedDropDownMenuItem = value.toString();
                     widget.valueReturned(_selectedDropDownMenuItem);
@@ -83,7 +82,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   /// Responsible for loading the data that the dropdown uses
   void _loadDataForDropdown() async {
-    
+
     if (!_shouldFetchDataFromUrl(widget.urlToFetchData) && !_shouldGetDataFromDataSource(widget.dataSource)) {
       throw Exception(
           "EnhancedDropDownWidget did you remember to pass in a datasource or an endpoint?");
@@ -94,7 +93,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
     List<DropdownMenuItem<dynamic>> menuItems = [];
 
     //Adding default menu item
-    _addMenuItem(menuItems, _selectedDropDownMenuItem);
+    _addMenuItem(menuItems, widget.defaultOptionText);
 
     if (_shouldFetchDataFromUrl(widget.urlToFetchData)) {
       _fetchAndParseData(widget.urlToFetchData!, menuItems)
