@@ -68,8 +68,8 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
     if (_shouldFetchDataFromUrl(widget.urlToFetchData)) {
       _fetchAndParseData(widget.urlToFetchData!, menuItems)
-          .then((value) => setState(() {
-                _dropDownItems = value;
+          .then((parsedDropDownMenuItems) => setState(() {
+                _dropDownItems = parsedDropDownMenuItems;
               }));
     } else if (_shouldGetDataFromDataSource(widget.dataSource)) {
       for (final dataSourceElement in widget.dataSource!) {
@@ -117,13 +117,14 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       var response = await http.get(url);
       if (response.statusCode == HttpStatus.ok) {
         dynamic jsonResponse = convert.jsonDecode(response.body);
-        if (jsonResponse is List<dynamic>) {
+        bool isListOfObjects = jsonResponse is List<dynamic>;
+        if (isListOfObjects) {
           for (final item in jsonResponse) {
-            String dropdownItemData = _getDropdownValue(item, true);
+            String dropdownItemData = _getDropdownValue(item, isListOfObjects);
             _addMenuItem(menuItems, dropdownItemData);
           }
         } else if (jsonResponse is Map<String, dynamic>) {
-            String dropdownItemData = _getDropdownValue(jsonResponse, false);
+            String dropdownItemData = _getDropdownValue(jsonResponse, isListOfObjects);
             _addMenuItem(menuItems, dropdownItemData);
         }
       } else {
