@@ -61,13 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withData(
                   dropdownLabelTitle: "EDW With Data (String)",
                   dataSource: ["A", "B"],
-                  defaultOptionText: "A",
+                  defaultOptionText: "Choose Letter",
                   valueReturned: (chosenValue) {
                     print("EDW the chosen value is: $chosenValue");
                   }),
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle: "EDW With Endpoint (One Object)",
-                  defaultOptionText: "Choose a value",
+                  defaultOptionText: "Choose a first name",
                   urlToFetchData: Uri.https(ENDPOINT, PERSON_PATH),
                   valueReturned: (chosenValue) {
                     print("EDW the chosen value is: $chosenValue");
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withEndpoint(
                   dropdownLabelTitle:
                       "EDW With Endpoint Object (List of Objects)",
-                  defaultOptionText: "Choose a value",
+                  defaultOptionText: "Choose a first name",
                   urlToFetchData: Uri.https(ENDPOINT, PERSON_LIST_PATH),
                   valueReturned: (chosenValue) {
                     print("EDW the first name of the person chosen is: $chosenValue");
