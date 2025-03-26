@@ -1,6 +1,7 @@
 import 'package:enhanced_drop_down_example/person.dart';
 import 'package:flutter/material.dart';
 import 'package:enhanced_drop_down/enhanced_drop_down.dart';
+import 'constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Enhanced Dropdown Widget Example',
+      title: APP_TITLE,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -36,48 +37,47 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Enhanced Dropdown Widget Example'),
+          title: Text(APP_TITLE),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               EnhancedDropDown.withData(
-                  dropdownLabelTitle: "EDW With Data Object",
+                  dropdownLabelTitle: EDW_WITH_DATA_OBJECT_LABEL,
                   dataSource: [
-                    new Person("First", "Last", 10),
-                    new Person("Last", "First", 20)
+                    Person("First", "Last", 10),
+                    Person("Last", "First", 20)
                   ],
                   defaultOptionText: "Choose Person",
-                  valueReturned: (chosen) {
-                    print(chosen);
+                  valueReturned: (chosenValue) {
+                    print("EDW the chosen value is: $chosenValue");
                   },
-                  fieldToPresent: "firstName"),
+                  fieldToPresent: FIRST_NAME_FIELD_KEY),
               EnhancedDropDown.withData(
-                  dropdownLabelTitle: "EDW With Data (String)",
+                  dropdownLabelTitle: EDW_WITH_DATA_STRING_LABEL,
                   dataSource: ["A", "B"],
-                  defaultOptionText: "A",
-                  valueReturned: (chosen) {
-                    print(chosen);
+                  defaultOptionText: "Choose Letter",
+                  valueReturned: (chosenValue) {
+                    print("EDW the chosen value is: $chosenValue");
                   }),
               EnhancedDropDown.withEndpoint(
-                  dropdownLabelTitle: "EDW With Endpoint (One Object)",
-                  defaultOptionText: "Choose",
-                  urlToFetchData: Uri.https("run.mocky.io",
-                      "/v3/aceab7f3-ca9c-42f0-b63e-07dd501bb866"),
-                  valueReturned: (chosen) {
-                    print(chosen);
-                  }),
-              EnhancedDropDown.withEndpoint(
-                  dropdownLabelTitle:
-                      "EDW With Endpoint Object (List of Objects)",
-                  defaultOptionText: "Choose",
-                  urlToFetchData: Uri.https("run.mocky.io",
-                      "/v3/2d23072f-123c-4852-abb5-bc5e1668a415"),
-                  valueReturned: (chosen) {
-                    print(chosen);
+                  dropdownLabelTitle: EDW_WITH_ENDPOINT_OBJECT_LABEL,
+                  defaultOptionText: "Choose a first name",
+                  urlToFetchData: Uri.https(ENDPOINT, PERSON_PATH),
+                  valueReturned: (chosenValue) {
+                    print("EDW the chosen value is: $chosenValue");
                   },
-                  fieldToPresent: "firstName")
+                  fieldToPresent: FIRST_NAME_FIELD_KEY),
+              EnhancedDropDown.withEndpoint(
+                  dropdownLabelTitle: EDW_WITH_ENDPOINT_OBJECT_LIST_LABEL,
+                  defaultOptionText: "Choose a first name",
+                  urlToFetchData: Uri.https(ENDPOINT, PERSON_LIST_PATH),
+                  valueReturned: (chosenValue) {
+                    print(
+                        "EDW the first name of the person chosen is: $chosenValue");
+                  },
+                  fieldToPresent: FIRST_NAME_FIELD_KEY)
             ],
           ),
         ));
