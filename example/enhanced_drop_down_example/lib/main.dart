@@ -1,15 +1,11 @@
 import 'package:enhanced_drop_down_example/person.dart';
 import 'package:flutter/material.dart';
 import 'package:enhanced_drop_down/enhanced_drop_down.dart';
+import 'constants.dart';
 
 void main() {
   runApp(MyApp());
 }
-
-const String ENDPOINT = "raw.githubusercontent.com";
-const String PATH = "/TomerPacific/enhanced_drop_down/refs/heads/feature/refactor/example/enhanced_drop_down_example/";
-const String PERSON_PATH = PATH + "person.json";
-const String PERSON_LIST_PATH = PATH + "personList.json";
 
 class MyApp extends StatelessWidget {
   @override
