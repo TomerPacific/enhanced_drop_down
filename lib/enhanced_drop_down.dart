@@ -86,11 +86,6 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   /// Responsible for loading the data that the dropdown uses
   void _loadDataForDropdown() async {
 
-    if (_isNoDataSourceSet(widget.urlToFetchData,widget.dataSource)) {
-      throw Exception(
-          "EnhancedDropDownWidget did you remember to pass in a datasource or an endpoint?");
-    }
-
     _dropDownItems = const [];
 
     List<DropdownMenuItem<dynamic>> menuItems = [];
@@ -192,10 +187,5 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       throw Exception(
           "EnhancedDropDownWidget did you remember to implement toJson on your custom object?");
     }
-  }
-
-  bool _isNoDataSourceSet(Uri? urlToFetchData, List<dynamic>? dataSource) {
-    return !_shouldFetchDataFromUrl(urlToFetchData) &&
-        !_shouldGetDataFromDataSource(dataSource);
   }
 }
