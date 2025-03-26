@@ -59,25 +59,28 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    if (_dropDownItems.isEmpty) {
-      return Container();
-    } else {
-      return Container(
+    return _dropDownItems.isEmpty ?
+      Container(
           height: CONTAINER_HEIGHT,
-          child: Column(
-            children: <Widget>[
-              Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
-              DropdownButton<dynamic>(
-                  value: _selectedDropDownMenuItem.isEmpty? widget.defaultOptionText : _selectedDropDownMenuItem,
-                  items: _dropDownItems,
-                  onChanged: (value) {
-                    _selectedDropDownMenuItem = value.toString();
-                    widget.valueReturned(_selectedDropDownMenuItem);
-                    setState(() {});
-                  })
-            ],
-          ));
-    }
+          child: Center(
+            child: CircularProgressIndicator(),
+          )
+      )
+    : Container(
+        height: CONTAINER_HEIGHT,
+        child: Column(
+          children: <Widget>[
+            Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
+            DropdownButton<dynamic>(
+                value: _selectedDropDownMenuItem.isEmpty? widget.defaultOptionText : _selectedDropDownMenuItem,
+                items: _dropDownItems,
+                onChanged: (value) {
+                  _selectedDropDownMenuItem = value.toString();
+                  widget.valueReturned(_selectedDropDownMenuItem);
+                  setState(() {});
+                })
+          ],
+        ));
   }
 
   /// Responsible for loading the data that the dropdown uses
