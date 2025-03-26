@@ -1,4 +1,12 @@
+
+
+
 class Person {
+
+  final String FIRST_NAME_KEY = "firstName";
+  final String LAST_NAME_KEY = "lastName";
+  final String AGE_KEY = "age";
+
   String firstName = "";
   String lastName = "";
   int age = 0;
@@ -10,16 +18,16 @@ class Person {
   }
 
   Person.fromJson(Map<String, dynamic> json) {
-    firstName = json["firstName"];
-    lastName = json["lastName"];
-    age = json["age"];
+    firstName = json[FIRST_NAME_KEY];
+    lastName = json[LAST_NAME_KEY];
+    age = json[AGE_KEY];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data["firstName"] = firstName;
-    data["lastName"] = lastName;
-    data["age"] = age;
+    data[FIRST_NAME_KEY] = firstName;
+    data[LAST_NAME_KEY] = lastName;
+    data[AGE_KEY] = age;
     return data;
   }
 }
