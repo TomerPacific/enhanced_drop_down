@@ -59,33 +59,34 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return _dropDownItems.isEmpty ?
-      Container(
-          height: CONTAINER_HEIGHT,
-          child: Center(
-            child: CircularProgressIndicator(),
-          )
-      )
-    : Container(
-        height: CONTAINER_HEIGHT,
-        child: Column(
-          children: <Widget>[
-            Text(widget.dropdownLabelTitle, textDirection: TextDirection.ltr),
-            DropdownButton<dynamic>(
-                value: _selectedDropDownMenuItem.isEmpty? widget.defaultOptionText : _selectedDropDownMenuItem,
-                items: _dropDownItems,
-                onChanged: (value) {
-                  _selectedDropDownMenuItem = value.toString();
-                  widget.valueReturned(_selectedDropDownMenuItem);
-                  setState(() {});
-                })
-          ],
-        ));
+    return _dropDownItems.isEmpty
+        ? Container(
+            height: CONTAINER_HEIGHT,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ))
+        : Container(
+            height: CONTAINER_HEIGHT,
+            child: Column(
+              children: <Widget>[
+                Text(widget.dropdownLabelTitle,
+                    textDirection: TextDirection.ltr),
+                DropdownButton<dynamic>(
+                    value: _selectedDropDownMenuItem.isEmpty
+                        ? widget.defaultOptionText
+                        : _selectedDropDownMenuItem,
+                    items: _dropDownItems,
+                    onChanged: (value) {
+                      _selectedDropDownMenuItem = value.toString();
+                      widget.valueReturned(_selectedDropDownMenuItem);
+                      setState(() {});
+                    })
+              ],
+            ));
   }
 
   /// Responsible for loading the data that the dropdown uses
   void _loadDataForDropdown() async {
-
     _dropDownItems = const [];
 
     List<DropdownMenuItem<dynamic>> menuItems = [];
@@ -124,8 +125,9 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             _addMenuItem(menuItems, dropdownItemData);
           }
         } else if (jsonResponse is Map<String, dynamic>) {
-            String dropdownItemData = _getDropdownValue(jsonResponse, isListOfObjects);
-            _addMenuItem(menuItems, dropdownItemData);
+          String dropdownItemData =
+              _getDropdownValue(jsonResponse, isListOfObjects);
+          _addMenuItem(menuItems, dropdownItemData);
         }
       } else {
         print(
@@ -140,11 +142,10 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
 
   /// Used to correctly get a value from the data associated with the dropdown
   String _getDropdownValue(dynamic itemData, bool isElementPartOfList) {
-
     if (_isFieldToPresentSet(widget.fieldToPresent)) {
-      return isElementPartOfList ?
-      itemData[widget.fieldToPresent] :
-      _getDropdownValueFromSingleElement(itemData);
+      return isElementPartOfList
+          ? itemData[widget.fieldToPresent]
+          : _getDropdownValueFromSingleElement(itemData);
     }
 
     try {
