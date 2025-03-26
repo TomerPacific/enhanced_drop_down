@@ -70,12 +70,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   fieldToPresent: FIRST_NAME_FIELD_KEY),
               EnhancedDropDown.withEndpoint(
-                  dropdownLabelTitle:
-                      EDW_WITH_ENDPOINT_OBJECT_LIST_LABEL,
+                  dropdownLabelTitle: EDW_WITH_ENDPOINT_OBJECT_LIST_LABEL,
                   defaultOptionText: "Choose a first name",
                   urlToFetchData: Uri.https(ENDPOINT, PERSON_LIST_PATH),
                   valueReturned: (chosenValue) {
-                    print("EDW the first name of the person chosen is: $chosenValue");
+                    print(
+                        "EDW the first name of the person chosen is: $chosenValue");
                   },
                   fieldToPresent: FIRST_NAME_FIELD_KEY)
             ],
