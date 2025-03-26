@@ -1,8 +1,4 @@
-
-
-
 class Person {
-
   final String FIRST_NAME_KEY = "firstName";
   final String LAST_NAME_KEY = "lastName";
   final String AGE_KEY = "age";
