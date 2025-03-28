@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               EnhancedDropDown.withData(
                   dropdownLabelTitle: EDW_WITH_DATA_STRING_LABEL,
                   dataSource: ["A", "B"],
-                  defaultOptionText: "Choose Letter",
+                  defaultOptionText: "Choose a letter",
                   valueReturned: (chosenValue) {
                     print("EDW the chosen value is: $chosenValue");
                   }),
@@ -77,7 +77,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     print(
                         "EDW the first name of the person chosen is: $chosenValue");
                   },
-                  fieldToPresent: FIRST_NAME_FIELD_KEY)
+                  fieldToPresent: FIRST_NAME_FIELD_KEY),
+              EnhancedDropDown.withEndpoint(
+                  dropdownLabelTitle: EDW_WTH_ENDPOINT_DATA_STRING_LABEL,
+                  defaultOptionText: "Choose a letter",
+                  urlToFetchData: Uri.https(ENDPOINT, DATA_LIST_PATH),
+                  valueReturned: (chosenValue) {
+                    print("EDW the chosen value is: $chosenValue");
+                  }),
             ],
           ),
         ));
