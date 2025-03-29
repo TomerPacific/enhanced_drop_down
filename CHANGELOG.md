@@ -38,7 +38,7 @@
   * Refactored entire API, exposed two ways to instantiate widget
 
 ## [0.1.4]
-  * Upgraded dependency of http library to 0.13.0 and made changes according to it's changed API
+  * Upgraded dependency of http library to 0.13.0 and made changes according to its changed API
   * Added required attributes (opted to Null safety)
 
 ## [0.1.3]
