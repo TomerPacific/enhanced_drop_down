@@ -69,8 +69,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
             height: CONTAINER_HEIGHT,
             child: Column(
               children: <Widget>[
-                Text(widget.dropdownLabelTitle,
-                    textDirection: TextDirection.ltr),
+                Text(widget.dropdownLabelTitle),
                 DropdownButton<dynamic>(
                     value: _selectedDropDownMenuItem.isEmpty
                         ? widget.defaultOptionText
