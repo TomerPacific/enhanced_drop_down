@@ -1,3 +1,8 @@
+## [0.4.0+1]
+  * Refactoring entire project
+  * Adding an example for using data from an endpoint that is an array of strings
+  * A loading indicator now displays when data is fetched from an endpoint
+
 ## [0.3.4+1]
   * Formatting changelog
 
