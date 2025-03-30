@@ -19,7 +19,9 @@ An Enhanced Dropdown Widget (or EDW), is based on flutter's dropdown widget, but
 
 - In case you are relying on an external source to provide the data for the dropdown, you can pass in the url to fetch that data
     - This data can be one object with many fields
-    - Or a list of objects
+    - A list of objects
+    - An array of string values
+
 
 ## Instantiating an EDW can be done in two ways:
 
@@ -58,6 +60,7 @@ If you want to use a custom object as your data for the EDW, **you must**:
         > E/flutter (14555): [ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Exception: EnhancedDropDownWidget did you remember to implement toJson on your custom object?
 
 - Pass in the desired field (in String form) to show in the dropdown using **fieldToPresent**
+#### When using an object (or objects) as a data source, you **must** pass in a value for **fieldToPresent**
 
 ```
 EnhancedDropDown.withData(
@@ -109,7 +112,3 @@ class Person {
 <img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true" width="35%" height="100%"/>
 
 <img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_3.png?raw=true" width="35%" height="100%"/>
-
-<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_4.png?raw=true" width="35%" height="100%"/>
-
-<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_5.png?raw=true" width="35%" height="100%"/>
