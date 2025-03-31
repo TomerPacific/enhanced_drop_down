@@ -1,3 +1,6 @@
+## [0.4.0+2]
+  * Project fixes
+
 ## [0.4.0+1]
   * Refactoring entire project
   * Adding an example for using data from an endpoint that is an array of strings
