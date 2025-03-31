@@ -25,7 +25,7 @@ dependencies:
     sdk: flutter
   http: ^1.0.0
   enhanced_drop_down:
-    path: ../../../enhanced_drop_down
+    path: ../../enhanced_drop_down
 
 
   # The following adds the Cupertino Icons font to your application.
