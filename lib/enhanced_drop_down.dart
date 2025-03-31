@@ -5,9 +5,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'dart:io';
 
-const CONTAINER_HEIGHT = 100.0;
+///The default height of the container that holds the dropdown
+const _CONTAINER_HEIGHT = 100.0;
 
+/// A widget representing a dropdown that can be used to select a value from a list of values
+/// which is also paired with a label to describe the dropdown
 class EnhancedDropDown extends StatefulWidget {
+
+  ///Represents the value which the user selects from the dropdown
   final ValueChanged<dynamic> valueReturned;
 
   ///Constructor that accepts a list of elements to be the data source for the dropdown
@@ -61,12 +66,12 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
   Widget build(BuildContext context) {
     return _dropDownItems.isEmpty
         ? Container(
-            height: CONTAINER_HEIGHT,
+            height: _CONTAINER_HEIGHT,
             child: Center(
               child: CircularProgressIndicator(),
             ))
         : Container(
-            height: CONTAINER_HEIGHT,
+            height: _CONTAINER_HEIGHT,
             child: Column(
               children: <Widget>[
                 Text(widget.dropdownLabelTitle),
