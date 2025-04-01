@@ -11,7 +11,6 @@ const _CONTAINER_HEIGHT = 100.0;
 /// A widget representing a dropdown that can be used to select a value from a list of values
 /// which is also paired with a label to describe the dropdown
 class EnhancedDropDown extends StatefulWidget {
-
   ///Represents the value which the user selects from the dropdown
   final ValueChanged<dynamic> valueReturned;
 
