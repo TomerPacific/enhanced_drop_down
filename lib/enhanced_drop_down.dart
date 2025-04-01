@@ -3,7 +3,6 @@ library enhanced_drop_down;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-import 'dart:io';
 
 ///The default height of the container that holds the dropdown
 const _CONTAINER_HEIGHT = 100.0;
@@ -119,7 +118,7 @@ class _EnhancedDropDownState extends State<EnhancedDropDown> {
       Uri url, List<DropdownMenuItem<dynamic>> menuItems) async {
     try {
       var response = await http.get(url);
-      if (response.statusCode == HttpStatus.ok) {
+      if (response.statusCode == 200) {
         dynamic jsonResponse = convert.jsonDecode(response.body);
         bool isListOfObjects = jsonResponse is List<dynamic>;
         if (isListOfObjects) {
