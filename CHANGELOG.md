@@ -1,3 +1,6 @@
+## [0.4.0+3]
+  * Removing dart:io usage
+
 ## [0.4.0+2]
   * Project fixes
 
