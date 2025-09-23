@@ -10,7 +10,7 @@ const FIRST_NAME_FIELD_KEY = "firstName";
 //Network
 const String ENDPOINT = "raw.githubusercontent.com";
 const String PATH =
-    "/TomerPacific/enhanced_drop_down/refs/heads/master/example/enhanced_drop_down_example/";
+    "/TomerPacific/enhanced_drop_down/refs/heads/master/example/";
 const String PERSON_PATH = PATH + "person.json";
 const String PERSON_LIST_PATH = PATH + "personList.json";
 const String DATA_LIST_PATH = PATH + "dataList.json";
