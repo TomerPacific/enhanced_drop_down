@@ -1,3 +1,7 @@
+## [0.4.1+0]
+  * Upgrading http package to 1.0.5
+  * Upgrading example application (AGP, Gradle, Compile/Target SDK)
+
 ## [0.4.0+3]
   * Removing dart:io usage
 
