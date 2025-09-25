@@ -1,3 +1,6 @@
+## [0.4.1+1]
+  * No code changes. Changelog updated for clarification.
+
 ## [0.4.1+0]
   * Upgrading http package to 1.5.0
   * Upgrading example application (AGP, Gradle, Compile/Target SDK)
