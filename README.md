@@ -31,7 +31,10 @@ An Enhanced Dropdown Widget (or EDW), is based on flutter's dropdown widget, but
 EnhancedDropDown.withEndpoint(
             dropdownLabelTitle: "My Things",
             defaultOptionText: "Choose",
-            urlToFetchData: Uri.https("run.mocky.io","/v3/babc0845-8163-4f1e-80df-9bcabd3d4c43"),
+            urlToFetchData: Uri.https(
+                    "raw.githubusercontent.com",
+                    "/TomerPacific/enhanced_drop_down/refs/heads/master/example/personList.json"
+                    ),
             valueReturned: (chosen) {
               print(chosen);
             })
