@@ -1,3 +1,6 @@
+## [0.4.2+0]
+  * Upgrading min dart sdk version to 3.5.0.
+
 ## [0.4.1+1]
   * No code changes. Changelog updated for clarification.
 
