@@ -38,7 +38,12 @@ Always perform the following steps when starting work or after switching branche
    flutter pub get
    ```
 
-4. When working inside the `example/` folder, run `flutter pub get` there as well.
+4. When working inside the `example/` folder (for running or testing the example app), run `flutter pub get` there as well:
+   ```bash
+   cd example
+   flutter pub get
+   cd ..
+   ```
 
 ## 4. Build, Lint, and Test Instructions
 
@@ -107,7 +112,7 @@ Any change that fails CI should be corrected before issuing a pull request.
 
 - Always run `flutter pub get` in both project root and `example/` before builds.
 
-- **SDK mismatches:** If dependency resolution fails, adjust environment Flutter version according to `pubspec.yaml` constraints.
+- **SDK mismatches:** If dependency resolution fails, ensure you're using Flutter 3.24.0+ (stable channel) and Dart SDK 3.5.0+, as specified in `pubspec.yaml` (sdk: ">=3.5.0 <4.0.0"). The CI uses Flutter 3.24.0 with Dart 3.5.0.
 
 - **Running example app:** Requires an emulator or device; `flutter run` fails if none are available.
 
@@ -119,7 +124,7 @@ Any change that fails CI should be corrected before issuing a pull request.
 
 Agents should validate all of the following before creating a pull request:
 
-- [ ] `flutter pub get` runs without errors.
+- [ ] `flutter pub get` runs without errors in both project root and `example/` directory.
 - [ ] Code formatting passes: `flutter format --set-exit-if-changed .`
 - [ ] Static analysis passes: `flutter analyze`
 - [ ] All tests pass: `flutter test`
