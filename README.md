@@ -110,8 +110,6 @@ class Person {
 
 ## Screenshots
 
-<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_1.png?raw=true" width="35%" height="100%"/>
-
-<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_2.png?raw=true" width="35%" height="100%"/>
-
-<img src="https://github.com/TomerPacific/enhanced_drop_down/blob/master/graphics/screenshot_3.png?raw=true" width="35%" height="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/TomerPacific/enhanced_drop_down@master/graphics/screenshot_1.png" width="35%" height="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/TomerPacific/enhanced_drop_down@master/graphics/screenshot_2.png" width="35%" height="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/TomerPacific/enhanced_drop_down@master/graphics/screenshot_3.png" width="35%" height="100%"/>
